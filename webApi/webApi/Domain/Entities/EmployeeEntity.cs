@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace webApi.Domain.Entities
 {
-    [Table("Employees")]
+    [Table("employees")]
     public class EmployeeEntity
     {
         [Column("id")]
@@ -25,12 +26,22 @@ namespace webApi.Domain.Entities
 
         [Column("birth_date")]
         [Required]
-        [StringLength(50)]
         public DateTime DateBirth { get; set; }
 
-        public int UserId { get; set; }
+        // Relation with User OneToOne
+        [ForeignKey("user_id")]
+        public UserEntity UserEntity { get; set; }
 
-        public UserEntity User { get; set; }
+        // Relation with Address OneToMany
+        [ForeignKey("address_id")]
+        public AddressEntity AddressEntity { get; set; }
+
+        //Relation with Department OneToMany
+        [ForeignKey("department_id")]
+        public DepartmentEntity DepartmentEntity { get; set; }
+
+        //Realtion with Project ManyToMany
+        public List<EmployeeProjectEntity> EmployeeProjects { get; set; }
 
         public EmployeeEntity()
         {

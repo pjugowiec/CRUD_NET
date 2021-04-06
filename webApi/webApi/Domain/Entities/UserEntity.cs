@@ -31,9 +31,9 @@ namespace webApi.Domain.Entities
 
         [Column("is_active")]
         [Required]
-        public bool isActive { get; set; }
+        public bool IsActive { get; set; }
 
-        public EmployeeEntity Employee { get; set; }
+        public EmployeeEntity EmployeeEntity { get; set; }
 
         public UserEntity()
         {
