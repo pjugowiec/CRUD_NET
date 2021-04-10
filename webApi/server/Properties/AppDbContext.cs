@@ -28,14 +28,6 @@ namespace webApi
                 .HasMany(a => a.EmployeeEntities)
                 .WithOne(b => b.AddressEntity);
 
-            modelBuilder.Entity<DepartmentEntity>()
-                .HasMany(a => a.EmployeeEntities)
-                .WithOne(b => b.DepartmentEntity);
-
-            modelBuilder.Entity<DepartmentEntity>()
-                .HasMany(a => a.ProjectEntities)
-                .WithOne(b => b.DepartmentEntity);
-
             // ManyToMany
             modelBuilder.Entity<EmployeeProjectEntity>()
                 .HasKey(bc => new { bc.EmployeeId, bc.ProjectId });

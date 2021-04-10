@@ -2,21 +2,23 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using webApi;
 
-namespace webApi.Migrations
+namespace server.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210410160816_inital")]
+    partial class inital
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
-                .HasAnnotation("ProductVersion", "5.0.4")
+                .HasAnnotation("ProductVersion", "5.0.5")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
             modelBuilder.Entity("webApi.Domain.Entities.AddressEntity", b =>
@@ -48,31 +50,6 @@ namespace webApi.Migrations
                     b.ToTable("addresses");
                 });
 
-            modelBuilder.Entity("webApi.Domain.Entities.DepartmentEntity", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasColumnName("id")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)")
-                        .HasColumnName("name");
-
-                    b.Property<string>("ShortName")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("character varying(10)")
-                        .HasColumnName("short_name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("departments");
-                });
-
             modelBuilder.Entity("webApi.Domain.Entities.EmployeeEntity", b =>
                 {
                     b.Property<long>("Id")
@@ -100,17 +77,12 @@ namespace webApi.Migrations
                     b.Property<long?>("address_id")
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("department_id")
-                        .HasColumnType("bigint");
-
                     b.Property<long?>("user_id")
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
                     b.HasIndex("address_id");
-
-                    b.HasIndex("department_id");
 
                     b.HasIndex("user_id")
                         .IsUnique();
@@ -159,12 +131,7 @@ namespace webApi.Migrations
                         .HasColumnType("timestamp without time zone")
                         .HasColumnName("start_date");
 
-                    b.Property<long?>("department_id")
-                        .HasColumnType("bigint");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("department_id");
 
                     b.ToTable("projects");
                 });
@@ -210,17 +177,11 @@ namespace webApi.Migrations
                         .WithMany("EmployeeEntities")
                         .HasForeignKey("address_id");
 
-                    b.HasOne("webApi.Domain.Entities.DepartmentEntity", "DepartmentEntity")
-                        .WithMany("EmployeeEntities")
-                        .HasForeignKey("department_id");
-
                     b.HasOne("webApi.Domain.Entities.UserEntity", "UserEntity")
                         .WithOne("EmployeeEntity")
                         .HasForeignKey("webApi.Domain.Entities.EmployeeEntity", "user_id");
 
                     b.Navigation("AddressEntity");
-
-                    b.Navigation("DepartmentEntity");
 
                     b.Navigation("UserEntity");
                 });
@@ -244,25 +205,9 @@ namespace webApi.Migrations
                     b.Navigation("ProjectEntity");
                 });
 
-            modelBuilder.Entity("webApi.Domain.Entities.ProjectEntity", b =>
-                {
-                    b.HasOne("webApi.Domain.Entities.DepartmentEntity", "DepartmentEntity")
-                        .WithMany("ProjectEntities")
-                        .HasForeignKey("department_id");
-
-                    b.Navigation("DepartmentEntity");
-                });
-
             modelBuilder.Entity("webApi.Domain.Entities.AddressEntity", b =>
                 {
                     b.Navigation("EmployeeEntities");
-                });
-
-            modelBuilder.Entity("webApi.Domain.Entities.DepartmentEntity", b =>
-                {
-                    b.Navigation("EmployeeEntities");
-
-                    b.Navigation("ProjectEntities");
                 });
 
             modelBuilder.Entity("webApi.Domain.Entities.EmployeeEntity", b =>

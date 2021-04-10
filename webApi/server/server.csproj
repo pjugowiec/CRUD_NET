@@ -5,6 +5,7 @@
   </PropertyGroup>
 
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'webApi' " />
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
@@ -18,6 +19,7 @@
     <PackageReference Include="Expressmapper" Version="1.9.1" />
     <PackageReference Include="Z.EntityFramework.Plus.EFCore" Version="5.1.30" />
     <PackageReference Include="Z.EntityFramework.Extensions.EFCore" Version="5.1.30" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.5" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\" />

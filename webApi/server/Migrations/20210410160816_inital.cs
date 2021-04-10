@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace webApi.Migrations
+namespace server.Migrations
 {
-    public partial class initial : Migration
+    public partial class inital : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -40,17 +40,19 @@ namespace webApi.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "departments",
+                name: "projects",
                 columns: table => new
                 {
                     id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
-                    short_name = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: false)
+                    name = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    end_date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    start_date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    budget = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_departments", x => x.id);
+                    table.PrimaryKey("PK_projects", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -63,8 +65,7 @@ namespace webApi.Migrations
                     surname = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     birth_date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     user_id = table.Column<long>(type: "bigint", nullable: true),
-                    address_id = table.Column<long>(type: "bigint", nullable: true),
-                    department_id = table.Column<long>(type: "bigint", nullable: true)
+                    address_id = table.Column<long>(type: "bigint", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -79,35 +80,6 @@ namespace webApi.Migrations
                         name: "FK_employees_addresses_address_id",
                         column: x => x.address_id,
                         principalTable: "addresses",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_employees_departments_department_id",
-                        column: x => x.department_id,
-                        principalTable: "departments",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "projects",
-                columns: table => new
-                {
-                    id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    name = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    end_date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    start_date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    budget = table.Column<long>(type: "bigint", nullable: false),
-                    department_id = table.Column<long>(type: "bigint", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_projects", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_projects_departments_department_id",
-                        column: x => x.department_id,
-                        principalTable: "departments",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -142,11 +114,6 @@ namespace webApi.Migrations
                 column: "address_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_employees_department_id",
-                table: "employees",
-                column: "department_id");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_employees_user_id",
                 table: "employees",
                 column: "user_id",
@@ -156,11 +123,6 @@ namespace webApi.Migrations
                 name: "IX_employees_projects_ProjectId",
                 table: "employees_projects",
                 column: "ProjectId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_projects_department_id",
-                table: "projects",
-                column: "department_id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -179,9 +141,6 @@ namespace webApi.Migrations
 
             migrationBuilder.DropTable(
                 name: "addresses");
-
-            migrationBuilder.DropTable(
-                name: "departments");
         }
     }
 }

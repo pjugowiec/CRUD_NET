@@ -18,32 +18,32 @@ namespace webApi.Controllers
             _employeeRepo = employeeRepo;
         }
 
-        [HttpGet(Name = "Get employees")]
-        public IEnumerable<EmployeeEntity> GetEmployees()
+        [HttpGet(Name = "GetEmployees")]
+        public IEnumerable<EmployeeEntity> GetAll()
         {
             return _employeeRepo.GetAll();
         }
 
-        [HttpGet("{id}", Name = "Find by Id")]
-        public void GetEmployeeById([FromQuery] long id)
+        [HttpGet("{id}", Name = "FindEmployeeById")]
+        public void GetById([FromQuery] long id)
         {
             _employeeRepo.Get(id);
         }
 
-        [HttpPost(Name = "Create Employee")]
-        public void CreateEmployee([FromBody] EmployeeEntity employee)
+        [HttpPost(Name = "CreateEmployee")]
+        public void Create([FromBody] EmployeeEntity employee)
         {
             _employeeRepo.Insert(employee);
         }
 
-        [HttpPut("{id}", Name = "Update Employee")]
-        public void UpdateEmployee([FromQuery] long id, [FromBody] EmployeeEntity employee)
+        [HttpPut("{id}", Name = "UpdateEmployee")]
+        public void Update([FromQuery] long id, [FromBody] EmployeeEntity employee)
         {
             _employeeRepo.Update(employee, id);
         }
 
-        [HttpDelete("{id}", Name = "Delete employee by id")]
-        public void DeleteEmployeeById([FromQuery] long id)
+        [HttpDelete("{id}", Name = "DeleteEmployeeById")]
+        public void DeleteById([FromQuery] long id)
         {
             _employeeRepo.Delete(id);
         }

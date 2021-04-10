@@ -31,10 +31,6 @@ namespace webApi.Domain.Entities
         [ForeignKey("address_id")]
         public AddressEntity AddressEntity { get; set; }
 
-        //Relation with Department OneToMany
-        [ForeignKey("department_id")]
-        public DepartmentEntity DepartmentEntity { get; set; }
-
         //Realtion with Project ManyToMany
         public List<EmployeeProjectEntity> EmployeeProjects { get; set; }
 

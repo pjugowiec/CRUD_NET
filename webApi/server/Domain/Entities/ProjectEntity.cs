@@ -24,9 +24,6 @@ namespace webApi.Domain.Entities
         [Required]
         public long Budget { get; set; }
 
-        [ForeignKey("department_id")]
-        public DepartmentEntity DepartmentEntity { get; set; }
-
         //Realtion with Employee ManyToMany
         public List<EmployeeProjectEntity> EmployeeProjects { get; set; }
 
