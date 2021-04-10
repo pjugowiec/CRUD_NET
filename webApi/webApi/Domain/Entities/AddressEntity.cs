@@ -5,14 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace webApi.Domain.Entities
 {
     [Table("addresses")]
-    public class AddressEntity
+    public class AddressEntity : BaseEntity
     {
-
-        [Column("id")]
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Required]
-        public int AddressId { get; set; }
 
         [Column("street")]
         [Required]

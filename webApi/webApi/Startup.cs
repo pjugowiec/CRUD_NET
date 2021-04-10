@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using webApi.Repositories;
 
 namespace webApi
 {
@@ -26,6 +27,7 @@ namespace webApi
         {
 
             services.AddDbContext<AppDbContext>();
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddControllersWithViews();
             services.AddControllers();
             services.AddCors();
@@ -41,6 +43,7 @@ namespace webApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UsePathBase(new Microsoft.AspNetCore.Http.PathString("/api"));
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseAuthorization();

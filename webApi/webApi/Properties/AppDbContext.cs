@@ -15,7 +15,7 @@ namespace webApi
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql(@"server=localhost;port=5432;database=postgres;user id=postgres;password=root;");
+            optionsBuilder.UseNpgsql("server=localhost;port=5432;database=postgres;user id=postgres;password=root;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

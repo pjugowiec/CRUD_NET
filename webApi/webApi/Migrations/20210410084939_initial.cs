@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace webApi.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,7 +12,7 @@ namespace webApi.Migrations
                 name: "_adm_users",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "integer", nullable: false)
+                    id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     login = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     password = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
@@ -28,7 +28,7 @@ namespace webApi.Migrations
                 name: "addresses",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "integer", nullable: false)
+                    id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     street = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     number = table.Column<int>(type: "integer", nullable: false),
@@ -43,7 +43,7 @@ namespace webApi.Migrations
                 name: "departments",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "integer", nullable: false)
+                    id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     short_name = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: false)
@@ -57,14 +57,14 @@ namespace webApi.Migrations
                 name: "employees",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "integer", nullable: false)
+                    id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     name = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     surname = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     birth_date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    user_id = table.Column<int>(type: "integer", nullable: true),
-                    address_id = table.Column<int>(type: "integer", nullable: true),
-                    department_id = table.Column<int>(type: "integer", nullable: true)
+                    user_id = table.Column<long>(type: "bigint", nullable: true),
+                    address_id = table.Column<long>(type: "bigint", nullable: true),
+                    department_id = table.Column<long>(type: "bigint", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -93,13 +93,13 @@ namespace webApi.Migrations
                 name: "projects",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "integer", nullable: false)
+                    id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     name = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     end_date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     start_date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     budget = table.Column<long>(type: "bigint", nullable: false),
-                    department_id = table.Column<int>(type: "integer", nullable: true)
+                    department_id = table.Column<long>(type: "bigint", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -116,8 +116,8 @@ namespace webApi.Migrations
                 name: "employees_projects",
                 columns: table => new
                 {
-                    EmployeeId = table.Column<int>(type: "integer", nullable: false),
-                    ProjectId = table.Column<int>(type: "integer", nullable: false)
+                    EmployeeId = table.Column<long>(type: "bigint", nullable: false),
+                    ProjectId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {

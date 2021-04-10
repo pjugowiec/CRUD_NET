@@ -4,13 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace webApi.Domain.Entities
 {
     [Table("departments")]
-    public class DepartmentEntity
+    public class DepartmentEntity : BaseEntity
     {
-        [Column("id")]
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Required]
-        public int DepartmentId { get; set; }
 
         [Column("name")]
         [Required]

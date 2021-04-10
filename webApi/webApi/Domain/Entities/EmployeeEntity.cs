@@ -6,13 +6,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace webApi.Domain.Entities
 {
     [Table("employees")]
-    public class EmployeeEntity
+    public class EmployeeEntity : BaseEntity
     {
-        [Column("id")]
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Required]
-        public int EmployeeId { get; set; }
 
         [Column("name")]
         [Required]

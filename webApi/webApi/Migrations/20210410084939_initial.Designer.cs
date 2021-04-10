@@ -10,8 +10,8 @@ using webApi;
 namespace webApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210406173012_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20210410084939_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,9 +23,9 @@ namespace webApi.Migrations
 
             modelBuilder.Entity("webApi.Domain.Entities.AddressEntity", b =>
                 {
-                    b.Property<int>("AddressId")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
+                        .HasColumnType("bigint")
                         .HasColumnName("id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
@@ -45,16 +45,16 @@ namespace webApi.Migrations
                         .HasColumnType("character varying(100)")
                         .HasColumnName("street");
 
-                    b.HasKey("AddressId");
+                    b.HasKey("Id");
 
                     b.ToTable("addresses");
                 });
 
             modelBuilder.Entity("webApi.Domain.Entities.DepartmentEntity", b =>
                 {
-                    b.Property<int>("DepartmentId")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
+                        .HasColumnType("bigint")
                         .HasColumnName("id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
@@ -70,16 +70,16 @@ namespace webApi.Migrations
                         .HasColumnType("character varying(10)")
                         .HasColumnName("short_name");
 
-                    b.HasKey("DepartmentId");
+                    b.HasKey("Id");
 
                     b.ToTable("departments");
                 });
 
             modelBuilder.Entity("webApi.Domain.Entities.EmployeeEntity", b =>
                 {
-                    b.Property<int>("EmployeeId")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
+                        .HasColumnType("bigint")
                         .HasColumnName("id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
@@ -99,16 +99,16 @@ namespace webApi.Migrations
                         .HasColumnType("character varying(50)")
                         .HasColumnName("surname");
 
-                    b.Property<int?>("address_id")
-                        .HasColumnType("integer");
+                    b.Property<long?>("address_id")
+                        .HasColumnType("bigint");
 
-                    b.Property<int?>("department_id")
-                        .HasColumnType("integer");
+                    b.Property<long?>("department_id")
+                        .HasColumnType("bigint");
 
-                    b.Property<int?>("user_id")
-                        .HasColumnType("integer");
+                    b.Property<long?>("user_id")
+                        .HasColumnType("bigint");
 
-                    b.HasKey("EmployeeId");
+                    b.HasKey("Id");
 
                     b.HasIndex("address_id");
 
@@ -122,11 +122,11 @@ namespace webApi.Migrations
 
             modelBuilder.Entity("webApi.Domain.Entities.EmployeeProjectEntity", b =>
                 {
-                    b.Property<int>("EmployeeId")
-                        .HasColumnType("integer");
+                    b.Property<long>("EmployeeId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("ProjectId")
-                        .HasColumnType("integer");
+                    b.Property<long>("ProjectId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("EmployeeId", "ProjectId");
 
@@ -137,9 +137,9 @@ namespace webApi.Migrations
 
             modelBuilder.Entity("webApi.Domain.Entities.ProjectEntity", b =>
                 {
-                    b.Property<int>("ProjectId")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
+                        .HasColumnType("bigint")
                         .HasColumnName("id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
@@ -161,10 +161,10 @@ namespace webApi.Migrations
                         .HasColumnType("timestamp without time zone")
                         .HasColumnName("start_date");
 
-                    b.Property<int?>("department_id")
-                        .HasColumnType("integer");
+                    b.Property<long?>("department_id")
+                        .HasColumnType("bigint");
 
-                    b.HasKey("ProjectId");
+                    b.HasKey("Id");
 
                     b.HasIndex("department_id");
 
@@ -173,9 +173,9 @@ namespace webApi.Migrations
 
             modelBuilder.Entity("webApi.Domain.Entities.UserEntity", b =>
                 {
-                    b.Property<int>("UserId")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
+                        .HasColumnType("bigint")
                         .HasColumnName("id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
@@ -201,7 +201,7 @@ namespace webApi.Migrations
                         .HasColumnType("character varying(50)")
                         .HasColumnName("password");
 
-                    b.HasKey("UserId");
+                    b.HasKey("Id");
 
                     b.ToTable("_adm_users");
                 });

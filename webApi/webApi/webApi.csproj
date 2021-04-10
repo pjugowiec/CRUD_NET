@@ -11,10 +11,13 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.2" />
     <PackageReference Include="Npgsql" Version="5.0.4" />
     <PackageReference Include="Json.Net" Version="1.0.25" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.4">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.5">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Expressmapper" Version="1.9.1" />
+    <PackageReference Include="Z.EntityFramework.Plus.EFCore" Version="5.1.30" />
+    <PackageReference Include="Z.EntityFramework.Extensions.EFCore" Version="5.1.30" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\" />
@@ -25,7 +28,10 @@
     <Folder Include="Utils\" />
     <Folder Include="Mappers\" />
     <Folder Include="Services\Impl\" />
-    <Folder Include="Config\" />
     <Folder Include="Migrations\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Repositories\Impl\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Domain\Annotations\" />
   </ItemGroup>
 </Project>
