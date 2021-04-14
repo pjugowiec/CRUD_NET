@@ -21,5 +21,22 @@ namespace server.Mappers.Impl
                 IsActive = true
             };
         }
+
+        public UserEntity UpdateUserEntityByUserCreate(UserCreate user, UserEntity userEntity)
+        {
+            userEntity.Login = user.Login == userEntity.Login ? userEntity.Login : user.Login;
+            userEntity.Password = CheckPasswordsSame(user.Password, userEntity.Password)
+                ? userEntity.Password
+                : CommonUtils.EncodePasswordToBase64(user.Password);
+            userEntity.Email = user.Email == userEntity.Email ? userEntity.Email : user.Email;
+            return userEntity;
+        }
+
+        private bool CheckPasswordsSame(string newPassword, string oldPassword)
+        {
+            string decodedPassword = CommonUtils.DecodeFrom64(oldPassword);
+
+            return decodedPassword == newPassword;
+        }
     }
 }

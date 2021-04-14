@@ -9,7 +9,7 @@ namespace webApi.Repositories
         IEnumerable<T> GetAll();
         T GetById(long id);
         void Insert(T entity);
-        void Update(T entity, long id);
-        void Delete(long id);
+        void Update(T entity);
+        void DeleteById(long id);
     }
 }

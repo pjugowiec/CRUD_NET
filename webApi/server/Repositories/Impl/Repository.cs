@@ -34,12 +34,13 @@ namespace webApi.Repositories
             _dbContext.SaveChanges();
         }
 
-        public void Update(T entity, long id)
+        public void Update(T entity)
         {
+            _entities.Update(entity);
             _dbContext.SaveChanges();
         }
 
-        public void Delete(long id)
+        public void DeleteById(long id)
         {
             _entities.Where(x => x.Id == id).Delete();
             _dbContext.SaveChanges();

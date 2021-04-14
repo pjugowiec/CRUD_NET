@@ -11,10 +11,12 @@ namespace server.Repositories.Impl
 {
     public class EmployeeRepository : IEmployeeRepository
     {
+        private readonly AppDbContext _context;
         private DbSet<EmployeeEntity> _entities;
 
         public EmployeeRepository(AppDbContext context)
         {
+            _context = context;
             _entities = context.Set<EmployeeEntity>();
         }
 
@@ -30,6 +32,31 @@ namespace server.Repositories.Impl
                 IsActive = emp.UserEntity.IsActive,
                 CountOfProjects = emp.EmployeeProjects.Count
             }).ToList();
+        }
+
+        public EmployeeEntity GetEmployeeByIdWithRelations(long id)
+        {
+            EmployeeEntity employeeEntity = _entities.Single(s => s.Id == id);
+            employeeEntity.UserEntity = GetUserEntityByJoining(id);
+            return employeeEntity;
+       }
+
+        private UserEntity GetUserEntityByJoining(long id)
+        {
+            return _entities
+                .Where(s => s.Id == id)
+                .Join(
+                _context.Users,
+                emp => emp.UserEntity.Id,
+                usr => usr.Id,
+                (emp, usr) => new UserEntity
+                {
+                    Id = usr.Id,
+                    Email = usr.Email,
+                    IsActive = usr.IsActive,
+                    Login = usr.Login,
+                    Password = usr.Password
+                }).FirstOrDefault();
         }
     }
 }

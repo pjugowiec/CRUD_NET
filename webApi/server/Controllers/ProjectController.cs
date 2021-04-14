@@ -38,13 +38,13 @@ namespace server.Controllers
         [HttpPut("{id}", Name = "UpdateProject")]
         public void Update([FromQuery] long id, [FromBody] ProjectEntity project)
         {
-            _projectRepo.Update(project, id);
+            _projectRepo.Update(project);
         }
 
         [HttpDelete("{id}", Name = "DeleteProjectById")]
         public void DeleteById([FromQuery] long id)
         {
-            _projectRepo.Delete(id);
+            _projectRepo.DeleteById(id);
         }
     }
 }

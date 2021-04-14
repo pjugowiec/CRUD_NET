@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using server.Domain.Annotations;
 using server.Domain.Models;
 using server.Mappers;
 using server.Repositories;
@@ -23,15 +24,36 @@ namespace server.Services.Impl
             _employeeMapper = employeeMapper;
         }
 
-        public IEnumerable<Employee> getEmployees()
+        public IEnumerable<Employee> GetEmployees()
         {
             return _employeeRepo.getEmployees();
         }
 
-        public void createEmployee(EmployeeCreate employee)
+        [Transactional]
+        public void CreateEmployee(EmployeeCreate employee)
         {
             EmployeeEntity employeeEntity = _employeeMapper.EmployeeCreateToEmployeeEntity(employee);
             _genericRepo.Insert(employeeEntity);
+        }
+
+        public EmployeeEntity GetEmployeeById(long id)
+        {
+            return _genericRepo.GetById(id);
+        }
+
+        [Transactional]
+        public void UpdateEmployee(EmployeeCreate employee, long id)
+        {
+            EmployeeEntity employeeEntity = _employeeRepo.GetEmployeeByIdWithRelations(id);
+            EmployeeEntity updatedEntity =
+                _employeeMapper.UpdateEmployeeEntityByEmployeeCreate(employee, employeeEntity);
+            _genericRepo.Update(updatedEntity);
+
+        }
+
+        public void DeleteEmployeeById(long id)
+        {
+            _genericRepo.DeleteById(id);
         }
     }
 }

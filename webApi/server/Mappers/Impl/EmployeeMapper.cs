@@ -15,7 +15,6 @@ namespace server.Mappers.Impl
         public EmployeeMapper(IAddressService addressService,
             IUserMapper userMapper)
         {
-
             _addressService = addressService;
             _userMapper = userMapper;
         }
@@ -30,8 +29,18 @@ namespace server.Mappers.Impl
                 AddressEntity = _addressService.GetAddressEntityByDto(employee.address),
                 UserEntity = _userMapper.UserCreateToUserEntity(employee.user)
 
-
             };
+        }
+
+        public EmployeeEntity UpdateEmployeeEntityByEmployeeCreate(EmployeeCreate employee, EmployeeEntity employeeEntity)
+        {
+            employeeEntity.Name = employee.Name == employeeEntity.Name ? employeeEntity.Name : employee.Name;
+            employeeEntity.Surname = employee.Surname == employeeEntity.Surname ? employeeEntity.Surname : employee.Surname;
+            employeeEntity.DateBirth = employee.DateBirth == employeeEntity.DateBirth ? employeeEntity.DateBirth : employee.DateBirth;
+            employeeEntity.AddressEntity = _addressService.GetAddressEntityByDto(employee.address);
+            employeeEntity.UserEntity = _userMapper.UpdateUserEntityByUserCreate(employee.user, employeeEntity.UserEntity);
+
+            return employeeEntity;
         }
 
 
