@@ -35,5 +35,6 @@
     <Folder Include="Repositories\Impl\" />
     <Folder Include="Exceptions\" />
     <Folder Include="Domain\Annotations\" />
+    <Folder Include="Mappers\Impl\" />
   </ItemGroup>
 </Project>

@@ -23,7 +23,7 @@ namespace webApi.Repositories
             return _entities.AsEnumerable();
         }
 
-        public T Get(long id)
+        public T GetById(long id)
         {
             return _entities.Single(s => s.Id == id);
         }

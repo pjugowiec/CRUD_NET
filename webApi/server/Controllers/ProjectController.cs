@@ -26,7 +26,7 @@ namespace server.Controllers
         [HttpGet("{id}", Name = "FindProjectById")]
         public void GetById([FromQuery] long id)
         {
-            _projectRepo.Get(id);
+            _projectRepo.GetById(id);
         }
 
         [HttpPost(Name = "CreateProject")]
