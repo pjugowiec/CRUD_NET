@@ -1,0 +1,37 @@
+<div class="background">
+    <h1>{{'GENERAL.TITLE' | translate | uppercase}}</h1>
+
+    <div class="dialog-form">
+        <div class="dialog-form-in">
+            <h2>{{'LOGIN_PANEL.TITLE_LOGIN' | translate | uppercase}}</h2>
+            <form [formGroup]="loginForm">
+                <div class="dialog-form-input-div">
+                    <mat-form-field class="dialog-input">
+                        <input matInput placeholder="{{'LOGIN_PANEL.USERNAME' | translate}}" formControlName="username"
+                            type="text" />
+                        <mat-error *ngIf="loginHasError">{{'GENERAL.COMMON_ERROR.FIELD_REQUIRED' | translate}}</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="dialog-form-input-div">
+                    <mat-form-field class="dialog-input">
+                        <input matInput placeholder="{{'LOGIN_PANEL.PASSWORD' | translate}}" formControlName="password"
+                            type="password" />
+                        <mat-error *ngIf="loginHasError('password', 'required')">{{'GENERAL.COMMON_ERROR.FIELD_REQUIRED' | translate}}</mat-error>
+                    </mat-form-field>
+                </div>
+                <p class="text-under-dialog">{{'LOGIN_PANEL.FORGOT_PASSWORD' | translate}}</p>
+                <div>
+                    <button class="button" [disabled]="loginForm.invalid" (click)="tryLogin()">{{'LOGIN_PANEL.LOGIN' | translate}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="copy">
+        <p class="copyrights">{{'LOGIN_PANEL.COPYRIGHTS' | translate}} |<button class="settings"
+                [matMenuTriggerFor]="langMenu">{{langWord}}</button></p>
+        <mat-menu #langMenu="matMenu" class="lang-menu">
+            <span mat-menu-item (click)="changeLang('en')">{{'GENERAL.LANG_EN' | translate}}</span>
+            <span mat-menu-item (click)="changeLang('pl')">{{'GENERAL.LANG_PL' | translate}}</span>
+        </mat-menu>
+    </div>
+</div>

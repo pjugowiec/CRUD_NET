@@ -1,0 +1,16 @@
+{
+    "GENERAL": {
+        "VERSION": "v1.0",
+        "TITLE": "Aplikacja zaliczeniowa"
+    },
+
+    "LOGIN_PANEL": {
+        "COPYRIGHTS": "PJ",
+        "TITLE_LOGIN": "Panel logowania",
+        "USERNAME": "Nazwa uzytkownika",
+        "PASSWORD": "Hasło",
+        "FORGOT_PASSWORD": "Zapomniałeś hasła?",
+        "LOGIN": "Zaloguj"
+    }
+    
+}
