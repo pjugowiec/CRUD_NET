@@ -1,0 +1,22 @@
+<div class="mat-card-title">
+    <span fxFlex="95">{{title | translate}}</span>
+</div>
+
+<mat-dialog-content>
+
+    <mat-card [style.margin]="'2px 0'">
+
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <p translate>{{message}}</p>
+        </div>
+
+    </mat-card>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+
+    <button mat-button color="primary" type="button" (click)="onCancel()"> {{"GENERAL.CANCEL" | translate}}</button>
+    <button mat-raised-button [color]="isRegular ? 'accent': 'warn'" (click)="onConfirm()"> {{confirmButtonLabel || "GENERAL.DELETE" | translate}}</button>
+
+</mat-dialog-actions>

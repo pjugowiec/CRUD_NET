@@ -7,6 +7,7 @@
     grid-template-rows: repeat(12, 1fr);
     grid-template-areas:
         ". . . . word word word word . . . ."
+        ". . . . . . . . . . . ."
         ". . . form form form form form form . . ."
         ". . . form form form form form form . . ."
         ". . . form form form form form form . . ."
@@ -75,7 +76,7 @@ h2 {
 
 .text-under-dialog {
     font-size: 13px;
-    color: #black;
+    color: black;
     margin-top: 2vh;
     text-align: center;
     text-transform: none;

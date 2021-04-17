@@ -1,0 +1,18 @@
+<mat-toolbar color="primary" class="toolbar">
+  <span class="title">{{'GENERAL.TITLE' | translate}} | {{'GENERAL.VERSION' | translate}}</span>
+  <div class="settings">
+    <button mat-icon-button [matMenuTriggerFor]="langMenu">
+      <mat-icon>language</mat-icon>
+    </button>
+    <mat-menu #langMenu="matMenu" class="lang-menu">
+      <span mat-menu-item (click)="changeLang('pl')">{{'GENERAL.LANG_PL' | translate}}</span>
+      <span mat-menu-item (click)="changeLang('en')">{{'GENERAL.LANG_EN' | translate}}</span>
+    </mat-menu>
+    <button mat-icon-button [matMenuTriggerFor]="logout">
+      <mat-icon>power_settings_new</mat-icon>
+    </button>
+    <mat-menu #logout="matMenu" class="logout">
+      <span mat-menu-item (click)="tryLogout()">{{'GENERAL.LOGOUT' | translate}}</span>
+    </mat-menu>
+  </div>
+</mat-toolbar>

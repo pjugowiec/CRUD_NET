@@ -9,19 +9,22 @@
                     <mat-form-field class="dialog-input">
                         <input matInput placeholder="{{'LOGIN_PANEL.USERNAME' | translate}}" formControlName="username"
                             type="text" />
-                        <mat-error *ngIf="loginHasError">{{'GENERAL.COMMON_ERROR.FIELD_REQUIRED' | translate}}</mat-error>
+                        <mat-error *ngIf="loginHasError">{{'GENERAL.COMMON_ERROR.FIELD_REQUIRED' | translate}}
+                        </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="dialog-form-input-div">
                     <mat-form-field class="dialog-input">
                         <input matInput placeholder="{{'LOGIN_PANEL.PASSWORD' | translate}}" formControlName="password"
                             type="password" />
-                        <mat-error *ngIf="loginHasError('password', 'required')">{{'GENERAL.COMMON_ERROR.FIELD_REQUIRED' | translate}}</mat-error>
+                        <mat-error *ngIf="loginHasError('password', 'required')">{{'GENERAL.COMMON_ERROR.FIELD_REQUIRED'
+                            | translate}}</mat-error>
                     </mat-form-field>
                 </div>
                 <p class="text-under-dialog">{{'LOGIN_PANEL.FORGOT_PASSWORD' | translate}}</p>
                 <div>
-                    <button class="button" [disabled]="loginForm.invalid" (click)="tryLogin()">{{'LOGIN_PANEL.LOGIN' | translate}}</button>
+                    <button class="button" [disabled]="loginForm.invalid" (click)="tryLogin()">{{'LOGIN_PANEL.LOGIN' |
+                        translate}}</button>
                 </div>
             </form>
         </div>

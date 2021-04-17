@@ -1,9 +1,22 @@
 {
     "GENERAL": {
         "VERSION": "v1.0",
-        "TITLE": "Aplikacja zaliczeniowa"
+        "TITLE": "Aplikacja zaliczeniowa",
+        "CANCEL": "Anuluj",
+        "DELETE": "Usuń",
+        "ADD": "Dodaj",
+        "LOGOUT": "Wyloguj",
+        "EDIT": "Edytuj",
+        "CLOSE": "Zamknij",
+        "SAVE": "Zapisz",
+        "FIND_EMPLOYEE": "Znajdź Pracownika",
+        "LANGUAGE": "Język",
+        "LANG_EN": "Angielski",
+        "LANG_PL": "Polski",
+        "COMMON_ERROR": {
+            "FIELD_REQUIRED": "Pole wymagane"
+        }
     },
-
     "LOGIN_PANEL": {
         "COPYRIGHTS": "PJ",
         "TITLE_LOGIN": "Panel logowania",
@@ -11,6 +24,22 @@
         "PASSWORD": "Hasło",
         "FORGOT_PASSWORD": "Zapomniałeś hasła?",
         "LOGIN": "Zaloguj"
+    },
+    "EMPLOYEE_PAGE": {
+        "TITLE": "Zarządzanie pracownikami",
+        "TABLE": {
+            "LP": "Lp",
+            "NAME": "Imię",
+            "SUR_NAME": "Nazwisko",
+            "AGE": "Wiek",
+            "USERNAME": "Nazwa użytkownika",
+            "IS_ACTIVE": "Aktywność",
+            "COUNT_OF_PROJECTS": "Liczba projektów",
+            "ACTIONS": "Akcje",
+            "GENERATE_EXCEL_FOR_ALL": "Wygeneruj karty",
+            "GENERATE_EXCEL_FOR_ONE": "Wygeneruj karte",
+            "CALENDAR": "Kalendarz"
+        }
     }
     
 }

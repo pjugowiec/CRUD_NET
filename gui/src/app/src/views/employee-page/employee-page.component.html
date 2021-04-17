@@ -1,0 +1,78 @@
+<app-navigation></app-navigation>
+
+<mat-form-field class="search">
+    <input matInput (keyup)="applyFilter($event)" placeholder="{{'GENERAL.FIND_EMPLOYEE' | translate}}">
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="lp">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'EMPLOYEE_PAGE.TABLE.LP' | translate}} </th>
+            <td mat-cell *matCellDef="let row; let i = index" (click)="employeDetails(row.id)"> {{i + 1}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'EMPLOYEE_PAGE.TABLE.NAME' | translate}}</th>
+            <td mat-cell *matCellDef="let row" (click)="employeDetails(row.id)"> {{row.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="surname">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'EMPLOYEE_PAGE.TABLE.SUR_NAME' | translate}}</th>
+            <td mat-cell *matCellDef="let row" (click)="employeDetails(row.id)"> {{row.surname}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="age">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'EMPLOYEE_PAGE.TABLE.AGE' | translate}}</th>
+            <td mat-cell *matCellDef="let row" (click)="employeDetails(row.id)"> {{row.age}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="username">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'EMPLOYEE_PAGE.TABLE.USERNAME' | translate}}
+            </th>
+            <td mat-cell *matCellDef="let row" (click)="employeDetails(row.id)"> {{row.username}}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="isActive">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'EMPLOYEE_PAGE.TABLE.IS_ACTIVE' | translate}}
+            </th>
+            <td mat-cell *matCellDef="let row" (click)="employeDetails(row.id)"> {{row.isActive}}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="countOfProjects">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'EMPLOYEE_PAGE.TABLE.COUNT_OF_PROJECTS' |
+                translate}}
+            </th>
+            <td mat-cell *matCellDef="let row" (click)="employeDetails(row.id)"> {{row.countOfProjects}}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="action">
+                <button mat-icon-button>
+                    <mat-icon (click)="addEmployee()">add</mat-icon>
+                </button>
+            </th>
+            <td mat-cell *matCellDef="let row">
+                <button mat-icon-button>
+                    <mat-icon (click)="openCalendar(row.id)">calendar_today</mat-icon>
+                </button>
+
+                <button mat-icon-button>
+                    <mat-icon (click)="generateExcel(row)">cloud_download</mat-icon>
+                </button>
+
+                <button mat-icon-button color="warn">
+                    <mat-icon (click)="deleteEmployee(row.id)">delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+        </tr>
+    </table>
+
+</div>
