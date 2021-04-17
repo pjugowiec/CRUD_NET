@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { TranslateService } from '@ngx-translate/core';
+import { take } from 'rxjs/operators';
 import { EmployeeRestSerivce } from '../../services/rest/employee-rest.service';
 
 @Component({
@@ -26,6 +27,7 @@ export class EmployeePageComponent implements OnInit {
   ];
 
   private _dataSource: MatTableDataSource<any>;
+  private _isLoadingResults: boolean = true;
 
   constructor(
     private _employeeRestService: EmployeeRestSerivce,
@@ -41,7 +43,12 @@ export class EmployeePageComponent implements OnInit {
     return this._dataSource;
   }
 
+  get isLoadingResults(): boolean {
+    return this._isLoadingResults;
+  }
+
   public ngOnInit(): void {
+    this.getData();
   }
 
   public applyFilter(event: Event) {
@@ -51,6 +58,27 @@ export class EmployeePageComponent implements OnInit {
     if (this._dataSource.paginator) {
       this._dataSource.paginator.firstPage();
     }
+  }
+
+  private getData() {
+    this._employeeRestService
+      .queryGet()
+      .pipe(take(1))
+      .subscribe(
+        (response) => {
+          this._isLoadingResults = false;
+          this._dataSource = new MatTableDataSource(response);
+          this._dataSource.sort = this.sort;
+        },
+        (error) => {
+          this._isLoadingResults = false;
+          this._translate
+            .get('EMPLOYEE_PAGE.ERRORS.ERROR_LOAD_DATA')
+            .subscribe((res: string) => {
+              this._snackBarService.open(res, 'ok', { duration: 3000 });
+            });
+        }
+      );
   }
 
 }

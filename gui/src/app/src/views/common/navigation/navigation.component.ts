@@ -28,7 +28,6 @@ export class NavigationComponent {
 	changeLang(choose: Language) {
 		switch (choose) {
 			case 'en':
-				console.log(choose)
 				this._translate.use('en');
 				break;
 			case 'pl':
