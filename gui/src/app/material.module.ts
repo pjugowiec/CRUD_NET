@@ -14,6 +14,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 const material = [
@@ -31,7 +33,10 @@ const material = [
     MatCheckboxModule,
     MatMenuModule,
     MatDatepickerModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatStepperModule,
+    MatDatepickerModule,
+    MatNativeDateModule
 ]
 @NgModule({
     imports: [material],

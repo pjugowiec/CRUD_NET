@@ -5,8 +5,10 @@ using System.ComponentModel.DataAnnotations;
 namespace server.Domain.Models
 {
     [Serializable]
-    public class EmployeeCreate
+    public class EmployeeModify
     {
+        public long Id { get; set; }
+
         [Required]
         public string Name { get; set; }
 
@@ -17,12 +19,9 @@ namespace server.Domain.Models
         public DateTime DateBirth { get; set; }
 
         [Required]
-        public UserCreate user { get; set; }
+        public UserModify User { get; set; }
 
         [Required]
-        public AddressCreate address { get; set; }
-
-        [Required]
-        public List<long> projectsIds { get; set; }
+        public AddressModify Address { get; set; }
     }
 }

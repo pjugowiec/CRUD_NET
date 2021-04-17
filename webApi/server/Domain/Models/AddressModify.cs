@@ -4,8 +4,10 @@ using System.ComponentModel.DataAnnotations;
 namespace server.Domain.Models
 {
     [Serializable]
-    public class AddressCreate
+    public class AddressModify
     {
+        public long Id { get; set; }
+
         [Required]
         public string Street { get; set; }
 
@@ -15,7 +17,7 @@ namespace server.Domain.Models
         [Required]
         public string City { get; set; }
 
-        public AddressCreate()
+        public AddressModify()
         {
         }
     }

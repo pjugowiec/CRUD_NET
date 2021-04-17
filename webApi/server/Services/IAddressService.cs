@@ -7,6 +7,6 @@ namespace server.Services
     public interface IAddressService
     {
 
-        public AddressEntity GetAddressEntityByDto(AddressCreate address);
+        public AddressEntity GetAddressEntityByDto(AddressModify address);
     }
 }

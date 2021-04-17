@@ -1,3 +1,5 @@
+import { MaterialModule } from 'src/app/material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { RestModule } from './src/services/rest.module';
 import { NgModule } from '@angular/core';
@@ -25,6 +27,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 		BrowserAnimationsModule,
 		ViewsModule,
 		RestModule,
+		FlexLayoutModule,
 		HttpClientModule,
 		TranslateModule.forRoot({
 			loader: {

@@ -18,11 +18,11 @@ namespace server.Services.Impl
         }
 
 
-        public AddressEntity GetAddressEntityByDto(AddressCreate address)
+        public AddressEntity GetAddressEntityByDto(AddressModify address)
         {
             AddressEntity addressEntity = _addressRepo.findByDto(address);
 
-            return addressEntity == null ? _addressMapper.AddressCreateToAddressEntity(address) : addressEntity;
+            return addressEntity == null ? _addressMapper.AddressModifyToAddressEntity(address) : addressEntity;
         }
     }
 }

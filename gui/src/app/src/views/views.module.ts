@@ -8,13 +8,15 @@ import { MaterialModule } from 'src/app/material.module';
 import { RestModule } from './../services/rest.module';
 import { NgModule } from '@angular/core';
 import { EmployeePageComponent } from './employee-page/employee-page.component';
+import { EmployeeFormComponent } from './employee-page/employee-form/employee-form.component';
 
 @NgModule({
     declarations: [
         LoginPageComponent,
         ConfirmDialogComponent,
         NavigationComponent,
-        EmployeePageComponent
+        EmployeePageComponent,
+        EmployeeFormComponent
     ],
     imports: [
         MaterialModule,
@@ -25,7 +27,8 @@ import { EmployeePageComponent } from './employee-page/employee-page.component';
         TranslateModule.forChild()
     ],
     entryComponents: [
-        ConfirmDialogComponent
+        ConfirmDialogComponent,
+        EmployeeFormComponent
     ]
 })
 export class ViewsModule { }

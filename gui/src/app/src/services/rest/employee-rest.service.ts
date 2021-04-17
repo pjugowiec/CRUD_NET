@@ -1,3 +1,4 @@
+import { EmployeeModify } from '../../model/external/EmployeeModify';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -12,21 +13,21 @@ export class EmployeeRestSerivce extends RestService {
     super(http);
   }
 
-  queryGet(): Observable<Array<Employee>> {
+  queryGetAll(): Observable<Array<Employee>> {
     return this.request<Array<Employee>>({
       url: `${EMPLOYEE_URL}`,
       method: Method.GET
     });
   }
 
-  queryEmployee(id: number): Observable<Employee> {
-    return this.request<Employee>({
+  queryGetOne(id: number): Observable<EmployeeModify> {
+    return this.request<EmployeeModify>({
       url: `${EMPLOYEE_URL}` + '/' + id,
-      method: Method.POST
+      method: Method.GET
     });
   }
 
-  queryPost(employee: Employee): Observable<void> {
+  queryPost(employee: EmployeeModify): Observable<void> {
     return this.request<void>({
       url: `${EMPLOYEE_URL}`,
       data: employee,
@@ -34,7 +35,7 @@ export class EmployeeRestSerivce extends RestService {
     });
   }
 
-  queryPut(employee: Employee, id: number): Observable<void> {
+  queryPut(employee: EmployeeModify, id: number): Observable<void> {
     return this.request<void>({
       url: `${EMPLOYEE_URL}` + '/' + id,
       data: employee,

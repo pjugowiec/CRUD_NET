@@ -6,6 +6,6 @@ namespace server.Mappers
 {
     public interface IAddressMapper
     {
-        public AddressEntity AddressCreateToAddressEntity(AddressCreate address);
+        public AddressEntity AddressModifyToAddressEntity(AddressModify address);
     }
 }

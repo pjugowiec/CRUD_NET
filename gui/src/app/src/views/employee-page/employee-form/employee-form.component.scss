@@ -1,0 +1,20 @@
+@import "~@angular/material/theming";
+@import "/src/app/theme.scss";
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: mat-color($primary);
+    color: white;
+    margin: -24px;
+    padding: 24px 48px 10px 48px;
+    margin-bottom: 20px;
+}
+
+::ng-deep .mat-vertical-stepper-header {
+    padding: 5px !important;
+}
+.input-in-line {
+    margin-right: 3vw;
+}

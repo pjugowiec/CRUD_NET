@@ -30,30 +30,30 @@ namespace server.Services.Impl
         }
 
         [Transactional]
-        public void CreateEmployee(EmployeeCreate employee)
+        public void CreateEmployee(EmployeeModify employee)
         {
-            EmployeeEntity employeeEntity = _employeeMapper.EmployeeCreateToEmployeeEntity(employee);
+            EmployeeEntity employeeEntity = _employeeMapper.EmployeeModifyToEmployeeEntity(employee);
             _genericRepo.Insert(employeeEntity);
         }
 
-        public EmployeeEntity GetEmployeeById(long id)
+        public EmployeeModify GetEmployeeById(long id)
         {
-            return _genericRepo.GetById(id);
+            return _employeeRepo.GetEmployeeById(id);
         }
 
         [Transactional]
-        public void UpdateEmployee(EmployeeCreate employee, long id)
+        public void UpdateEmployee(EmployeeModify employee, long id)
         {
             EmployeeEntity employeeEntity = _employeeRepo.GetEmployeeByIdWithRelations(id);
             EmployeeEntity updatedEntity =
-                _employeeMapper.UpdateEmployeeEntityByEmployeeCreate(employee, employeeEntity);
+                _employeeMapper.UpdateEmployeeEntityByEmployeeModify(employee, employeeEntity);
             _genericRepo.Update(updatedEntity);
 
         }
 
         public void DeleteEmployeeById(long id)
         {
-            _genericRepo.DeleteById(id);
+            _employeeRepo.DeleteCascadeByEmployeeId(id);
         }
     }
 }

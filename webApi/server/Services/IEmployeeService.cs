@@ -8,9 +8,9 @@ namespace server.Services
     public interface IEmployeeService
     {
         public IEnumerable<Employee> GetEmployees();
-        public void CreateEmployee(EmployeeCreate employee);
-        public EmployeeEntity GetEmployeeById(long id);
-        public void UpdateEmployee(EmployeeCreate employee, long id);
+        public void CreateEmployee(EmployeeModify employee);
+        public EmployeeModify GetEmployeeById(long id);
+        public void UpdateEmployee(EmployeeModify employee, long id);
         public void DeleteEmployeeById(long id);
     }
 }

@@ -6,7 +6,7 @@ namespace server.Mappers
 {
     public interface IEmployeeMapper
     {
-        public EmployeeEntity EmployeeCreateToEmployeeEntity(EmployeeCreate employee);
-        public EmployeeEntity UpdateEmployeeEntityByEmployeeCreate(EmployeeCreate employee, EmployeeEntity employeeEntity);
+        public EmployeeEntity EmployeeModifyToEmployeeEntity(EmployeeModify employee);
+        public EmployeeEntity UpdateEmployeeEntityByEmployeeModify(EmployeeModify employee, EmployeeEntity employeeEntity);
     }
 }

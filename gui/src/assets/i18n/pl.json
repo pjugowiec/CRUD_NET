@@ -9,13 +9,27 @@
         "EDIT": "Edytuj",
         "CLOSE": "Zamknij",
         "SAVE": "Zapisz",
+        "NEXT": "Dalej",
+        "BACK": "Cofnij",
+        "CLEAR": "Wyczyść",
         "FIND_EMPLOYEE": "Znajdź Pracownika",
         "LANGUAGE": "Język",
         "LANG_EN": "Angielski",
         "LANG_PL": "Polski",
         "COMMON_ERROR": {
-            "FIELD_REQUIRED": "Pole wymagane"
-        }
+            "FIELD_REQUIRED": "Pole wymagane",
+            "EMAIL": "Nie poprawny email",
+            "MIN_LENGTH_6": "Min. liczba znaków to 6",
+            "MIN_LENGTH_8": "Min. liczba znaków to 8",
+            "PROBLEM_WITH_SAVE": "Wystąpił problem z zapisem",
+            "PROBLEM_WITH_GET": "Wystąpił problem z pobraniem danych"
+        },
+        "INFO": {
+            "FORM_CLEAR": "Forma została wyczyszczona",
+            "SAVE_SUCCES": "Zapisano zmiany pomyślnie",
+            "DELETE_SUCCESS": "Pomyślnie usunięto"
+        },
+        "FINAL_STEP": "Zapisz lub wyczyść"
     },
     "LOGIN_PANEL": {
         "COPYRIGHTS": "PJ",
@@ -39,7 +53,37 @@
             "GENERATE_EXCEL_FOR_ALL": "Wygeneruj karty",
             "GENERATE_EXCEL_FOR_ONE": "Wygeneruj karte",
             "CALENDAR": "Kalendarz"
+        },
+        "CONFIRM_DELETE": {
+            "DELETE_EMPLOYEE": "Usuwanie pracownika",
+            "DELETE_EMPLOYEE_MESSAGE": "Czy napewno chcesz usunąć pracownika",
+            "ERROR": "Nie udało sie usunąć pracownika !",
+            "SUCCESS": "Pracownik usunięty"
         }
+    },
+
+    "EMPLOYEE_FORM": {
+        "ADD_EMPLOYEE": "Dodawanie pracownika",
+        "EDIT_EMPLOYEE": "Edycja pracownika",
+        "PERSONAL_INFO_TITLE": "Informacje o pracowniku",
+        "PERSONAL_INFO": {
+            "NAME": "Imię",
+            "SURNAME": "Nazwisko",
+            "DATE_BIRTH": "Data urodzenia"
+        },
+        "ADDRESS_INFO_TITLE": "Informacje o zamieszkaniu",
+        "ADDRESS_INFO": {
+            "STREET": "Ulica",
+            "NUMBER": "Nr. domu/mieszkania",
+            "CITY": "Miasto"
+        },
+        "USER_INFO_TITLE": "Informacje o użytkowniku",
+        "USER_INFO": {
+            "USERNAME": "Nazwa uzytkownika",
+            "PASSWORD": "Hasło",
+            "EMAIL": "Adres email"
+        }
+
     }
     
 }

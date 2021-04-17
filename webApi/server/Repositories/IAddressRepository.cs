@@ -6,6 +6,6 @@ namespace server.Repositories
 {
     public interface IAddressRepository
     {
-        AddressEntity findByDto(AddressCreate address);
+        AddressEntity findByDto(AddressModify address);
     }
 }

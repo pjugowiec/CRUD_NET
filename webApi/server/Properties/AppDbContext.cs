@@ -20,6 +20,7 @@ namespace webApi
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             modelBuilder.Entity<UserEntity>()
                 .HasOne(a => a.EmployeeEntity)
                 .WithOne(b => b.UserEntity);

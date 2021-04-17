@@ -16,7 +16,7 @@ namespace server.Repositories.Impl
             _entities = context.Set<AddressEntity>();
         }
 
-        public AddressEntity findByDto(AddressCreate address)
+        public AddressEntity findByDto(AddressModify address)
         {
             AddressEntity addressEntity = _entities.FirstOrDefault(addEnt =>
             addEnt.City == address.City &&

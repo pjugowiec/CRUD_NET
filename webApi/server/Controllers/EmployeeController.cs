@@ -30,7 +30,7 @@ namespace webApi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("{id}", Name = "FindEmployeeById")]
-        public EmployeeEntity GetById(long id)
+        public EmployeeModify GetById(long id)
         {
             return _employeeService.GetEmployeeById(id);
         }
@@ -38,7 +38,7 @@ namespace webApi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPost(Name = "CreateEmployee")]
-        public void Create([FromBody] EmployeeCreate employee)
+        public void Create([FromBody] EmployeeModify employee)
         {
             _employeeService.CreateEmployee(employee);
         }
@@ -46,7 +46,7 @@ namespace webApi.Controllers
         [HttpPut("{id}", Name = "UpdateEmployee")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public void Update(long id, [FromBody] EmployeeCreate employee)
+        public void Update(long id, [FromBody] EmployeeModify employee)
         {
             _employeeService.UpdateEmployee(employee, id);
         }

@@ -6,7 +6,7 @@ namespace server.Mappers
 {
     public interface IUserMapper
     {
-        public UserEntity UserCreateToUserEntity(UserCreate user);
-        public UserEntity UpdateUserEntityByUserCreate(UserCreate user, UserEntity userEntity);
+        public UserEntity UserModifyToUserEntity(UserModify user);
+        public UserEntity UpdateUserEntityByUserModify(UserModify user, UserEntity userEntity);
     }
 }

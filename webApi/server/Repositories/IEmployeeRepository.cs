@@ -9,5 +9,7 @@ namespace server.Repositories
     {
         public IEnumerable<Employee> getEmployees();
         public EmployeeEntity GetEmployeeByIdWithRelations(long id);
+        public EmployeeModify GetEmployeeById(long id);
+        public void DeleteCascadeByEmployeeId(long id);
     }
 }

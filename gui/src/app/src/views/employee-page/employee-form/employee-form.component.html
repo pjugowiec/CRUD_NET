@@ -1,0 +1,142 @@
+<div>
+    <div class="header">
+        <h2 *ngIf='isEditMode'>{{'EMPLOYEE_FORM.EDIT_EMPLOYEE' | translate}}</h2>
+        <h2 *ngIf='!isEditMode'>{{'EMPLOYEE_FORM.ADD_EMPLOYEE' | translate}}</h2>
+        <button class="close" mat-icon-button (click)="exit()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+    <div fxLayoutAlign="center center">
+        <mat-vertical-stepper [linear]="true" #stepper>
+
+            <mat-step>
+                <form [formGroup]="personalInfoForm">
+                    <ng-template matStepLabel>{{'EMPLOYEE_FORM.PERSONAL_INFO_TITLE' | translate}}</ng-template>
+
+                    <mat-form-field class="input-in-line">
+                        <input placeholder="{{'EMPLOYEE_FORM.PERSONAL_INFO.NAME' | translate}}" matInput
+                            formControlName="name" required>
+                        <mat-error *ngIf="personalHasError('name', 'required')">{{'GENERAL.COMMON_ERROR.FIELD_REQUIRED'
+                            | translate}}</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="input-in-line">
+                        <input matInput placeholder="{{'EMPLOYEE_FORM.PERSONAL_INFO.SURNAME' | translate}}"
+                            formControlName="surname" required>
+                        <mat-error *ngIf="personalHasError('surname', 'required')">
+                            {{'GENERAL.COMMON_ERROR.FIELD_REQUIRED'
+                            | translate}}</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="dateBirthpicker"
+                            placeholder="{{'EMPLOYEE_FORM.PERSONAL_INFO.DATE_BIRTH' | translate}}"
+                            formControlName="dateBirth">
+                        <mat-datepicker-toggle matSuffix [for]="dateBirthpicker"></mat-datepicker-toggle>
+                        <mat-datepicker #dateBirthpicker></mat-datepicker>
+                        <mat-error *ngIf="personalHasError('dateBirth', 'required')">
+                            {{'GENERAL.COMMON_ERROR.FIELD_REQUIRED'
+                            | translate}}</mat-error>
+                    </mat-form-field>
+
+                    <div>
+                        <button mat-button matStepperNext [disabled]="personalInfoForm.invalid">{{'GENERAL.NEXT' |
+                            translate}}</button>
+                    </div>
+                </form>
+            </mat-step>
+
+            <mat-step>
+                <form [formGroup]="addressForm">
+                    <ng-template matStepLabel>{{'EMPLOYEE_FORM.ADDRESS_INFO_TITLE' | translate}}</ng-template>
+
+                    <mat-form-field class="input-in-line">
+                        <input placeholder="{{'EMPLOYEE_FORM.ADDRESS_INFO.STREET' | translate}}" matInput
+                            formControlName="street" required>
+                        <mat-error *ngIf="addressHasError('street', 'required')">{{'GENERAL.COMMON_ERROR.FIELD_REQUIRED'
+                            | translate}}</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="input-in-line">
+                        <input matInput placeholder="{{'EMPLOYEE_FORM.ADDRESS_INFO.NUMBER' | translate}}"
+                            formControlName="number" required type="number">
+                        <mat-error *ngIf="addressHasError('number', 'required')">{{'GENERAL.COMMON_ERROR.FIELD_REQUIRED'
+                            | translate}}</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="input-in-line">
+                        <input matInput placeholder="{{'EMPLOYEE_FORM.ADDRESS_INFO.CITY' | translate}}"
+                            formControlName="city" required>
+                        <mat-error *ngIf="addressHasError('city', 'required')">{{'GENERAL.COMMON_ERROR.FIELD_REQUIRED'
+                            | translate}}</mat-error>
+                    </mat-form-field>
+
+                    <div>
+                        <button mat-flat-button matStepperPrevious>{{'GENERAL.BACK' | translate}}</button>
+                        <button mat-button matStepperNext [disabled]="addressForm.invalid">{{'GENERAL.NEXT' |
+                            translate}}</button>
+                    </div>
+                </form>
+            </mat-step>
+
+
+            <mat-step>
+                <form [formGroup]="userForm">
+                    <ng-template matStepLabel>{{'EMPLOYEE_FORM.USER_INFO_TITLE' | translate}}</ng-template>
+
+                    <mat-form-field class="input-in-line">
+                        <input placeholder="{{'EMPLOYEE_FORM.USER_INFO.USERNAME' | translate}}" matInput
+                            formControlName="username" required>
+                        <mat-error *ngIf="userHasError('username', 'required')">
+                            {{'GENERAL.COMMON_ERROR.FIELD_REQUIRED'
+                            | translate}}</mat-error>
+                        <mat-error *ngIf="userHasError('username', 'minlength')">
+                            {{'GENERAL.COMMON_ERROR.MIN_LENGTH_6'
+                            | translate}}</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="input-in-line" *ngIf="!isEditMode">
+                        <input matInput placeholder="{{'EMPLOYEE_FORM.USER_INFO.PASSWORD' | translate}}"
+                            formControlName="password" required [type]="hidePassword ? 'password' : 'text'">
+                        <mat-icon matSuffix (click)="setHidePassword = !hidePassword">{{hidePassword ? 'visibility_off'
+                            :
+                            'visibility'}}</mat-icon>
+                        <mat-error *ngIf="userHasError('password', 'required')">
+                            {{'GENERAL.COMMON_ERROR.FIELD_REQUIRED'
+                            | translate}}</mat-error>
+                        <mat-error *ngIf="userHasError('password', 'minlength')">
+                            {{'GENERAL.COMMON_ERROR.MIN_LENGTH_8'
+                            | translate}}</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="input-in-line">
+                        <input matInput placeholder="{{'EMPLOYEE_FORM.USER_INFO.EMAIL' | translate}}"
+                            formControlName="email" required type="email">
+                        <mat-error *ngIf="userHasError('email', 'required')">{{'GENERAL.COMMON_ERROR.FIELD_REQUIRED'
+                            | translate}}</mat-error>
+                        <mat-error *ngIf="userHasError('email', 'email')">{{'GENERAL.COMMON_ERROR.EMAIL'
+                            | translate}}</mat-error>
+                    </mat-form-field>
+
+                    <div>
+                        <button mat-flat-button matStepperPrevious>{{'GENERAL.BACK' | translate}}</button>
+                        <button mat-button matStepperNext [disabled]="userForm.invalid">{{'GENERAL.NEXT' |
+                            translate}}</button>
+                    </div>
+                </form>
+            </mat-step>
+
+            <mat-step>
+                <ng-template matStepLabel>{{'GENERAL.FINAL_STEP' | translate}}</ng-template>
+                <div>
+                    <button mat-button matStepperPrevious>{{'GENERAL.BACK' | translate}}</button>
+                    <button mat-button (click)="clearForms()">{{'GENERAL.CLEAR' | translate}}</button>
+                    <button mat-button (click)="save()" [disabled]="!checkIfFormsAreValid()">{{'GENERAL.SAVE' |
+                        translate}}</button>
+                </div>
+            </mat-step>
+        </mat-vertical-stepper>
+    </div>
+
+</div>

@@ -6,6 +6,7 @@ using server.Domain.Models;
 using server.Utils;
 using webApi;
 using webApi.Domain.Entities;
+using Z.EntityFramework.Plus;
 
 namespace server.Repositories.Impl
 {
@@ -34,6 +35,31 @@ namespace server.Repositories.Impl
             }).ToList();
         }
 
+        public EmployeeModify GetEmployeeById(long id)
+        {
+            return _entities.Where(s => s.Id == id)
+                .Select(emp => new EmployeeModify
+                {
+                    Id = emp.Id,
+                    Name = emp.Name,
+                    Surname = emp.Surname,
+                    DateBirth = emp.DateBirth,
+                    Address = new AddressModify
+                    {
+                        Id = emp.AddressEntity.Id,
+                        Street = emp.AddressEntity.Street,
+                        Number = emp.AddressEntity.Number,
+                        City = emp.AddressEntity.City
+                    },
+                    User = new UserModify
+                    {
+                        Id = emp.UserEntity.Id,
+                        Email = emp.UserEntity.Email,
+                        Login = emp.UserEntity.Login
+                    }
+                }).SingleOrDefault();
+        }
+
         public EmployeeEntity GetEmployeeByIdWithRelations(long id)
         {
             EmployeeEntity employeeEntity = _entities.Single(s => s.Id == id);
@@ -57,6 +83,14 @@ namespace server.Repositories.Impl
                     Login = usr.Login,
                     Password = usr.Password
                 }).FirstOrDefault();
+        }
+
+        public void DeleteCascadeByEmployeeId(long id)
+        {
+            EmployeeEntity employeeEntity = _entities.Single(s => s.Id == id);
+            _context.Users.Where(s => s.Id == employeeEntity.Id).Delete();
+            _entities.Where(s => s.Id == id).Delete();
+            _context.SaveChanges();
         }
     }
 }

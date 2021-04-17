@@ -10,7 +10,7 @@ namespace server.Mappers.Impl
         {
         }
 
-        public AddressEntity AddressCreateToAddressEntity(AddressCreate address)
+        public AddressEntity AddressModifyToAddressEntity(AddressModify address)
         {
             return new AddressEntity()
             {

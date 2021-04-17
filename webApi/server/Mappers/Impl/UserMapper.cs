@@ -11,7 +11,7 @@ namespace server.Mappers.Impl
         {
         }
 
-        public UserEntity UserCreateToUserEntity(UserCreate user)
+        public UserEntity UserModifyToUserEntity(UserModify user)
         {
             return new UserEntity()
             {
@@ -22,12 +22,15 @@ namespace server.Mappers.Impl
             };
         }
 
-        public UserEntity UpdateUserEntityByUserCreate(UserCreate user, UserEntity userEntity)
+        public UserEntity UpdateUserEntityByUserModify(UserModify user, UserEntity userEntity)
         {
-            userEntity.Login = user.Login == userEntity.Login ? userEntity.Login : user.Login;
-            userEntity.Password = CheckPasswordsSame(user.Password, userEntity.Password)
+            if(user.Password != null)
+            {
+                userEntity.Password = CheckPasswordsSame(user.Password, userEntity.Password)
                 ? userEntity.Password
                 : CommonUtils.EncodePasswordToBase64(user.Password);
+            }
+            userEntity.Login = user.Login == userEntity.Login ? userEntity.Login : user.Login;
             userEntity.Email = user.Email == userEntity.Email ? userEntity.Email : user.Email;
             return userEntity;
         }
