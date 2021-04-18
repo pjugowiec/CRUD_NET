@@ -39,7 +39,7 @@ VALUES('admin', 'admin', 'admin@admin.com', true);
 ### 3. Frontend
 
 Go to the `gui` folder via terminal (Unix), cmd (Windows), make sure nodeJs is accessible from console. 
-Enter `npm install` or` yarn install` and then execute` ng serve` after the dependencies have been imported successfully.
+Enter `npm install` or `yarn install` and then execute` ng serve` after the dependencies have been imported successfully.
 
 ### 4. Use application
 
