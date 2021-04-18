@@ -16,7 +16,7 @@ namespace server.Mappers.Impl
             return new UserEntity()
             {
                 Login = user.Login,
-                Password = CommonUtils.EncodePasswordToBase64(user.Password),
+                Password = user.Password,
                 Email = user.Email,
                 IsActive = true
             };
@@ -26,20 +26,14 @@ namespace server.Mappers.Impl
         {
             if(user.Password != null)
             {
-                userEntity.Password = CheckPasswordsSame(user.Password, userEntity.Password)
+                userEntity.Password = CommonUtils.CheckPasswordsSame(user.Password, userEntity.Password)
                 ? userEntity.Password
-                : CommonUtils.EncodePasswordToBase64(user.Password);
+                : user.Password;
             }
             userEntity.Login = user.Login == userEntity.Login ? userEntity.Login : user.Login;
             userEntity.Email = user.Email == userEntity.Email ? userEntity.Email : user.Email;
             return userEntity;
         }
 
-        private bool CheckPasswordsSame(string newPassword, string oldPassword)
-        {
-            string decodedPassword = CommonUtils.DecodeFrom64(oldPassword);
-
-            return decodedPassword == newPassword;
-        }
     }
 }

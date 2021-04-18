@@ -1,5 +1,4 @@
 import { ConfirmDialogComponent } from './../common/confirm-dialog/confirm-dialog.component';
-import { EmployeeModify } from '../../model/external/EmployeeModify';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -131,7 +130,7 @@ export class EmployeePageComponent implements OnInit {
         (error) => {
           this._isLoadingResults = false;
           this._translate
-            .get('EMPLOYEE_PAGE.ERRORS.ERROR_LOAD_DATA')
+            .get('GENERAL.COMMON_ERROR.PROBLEM_WITH_GET')
             .subscribe((res: string) => {
               this._snackBarService.open(res, 'ok', { duration: 3000 });
             });

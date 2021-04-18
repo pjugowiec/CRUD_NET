@@ -1,4 +1,8 @@
 <div class="background">
+
+    <div class="loading" *ngIf="isLoadingResults">
+        <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
     <h1>{{'GENERAL.TITLE' | translate | uppercase}}</h1>
 
     <div class="dialog-form">
@@ -21,7 +25,7 @@
                             | translate}}</mat-error>
                     </mat-form-field>
                 </div>
-                <p class="text-under-dialog">{{'LOGIN_PANEL.FORGOT_PASSWORD' | translate}}</p>
+                <!-- <p class="text-under-dialog">{{'LOGIN_PANEL.FORGOT_PASSWORD' | translate}}</p> -->
                 <div>
                     <button class="button" [disabled]="loginForm.invalid" (click)="tryLogin()">{{'LOGIN_PANEL.LOGIN' |
                         translate}}</button>
@@ -35,6 +39,7 @@
         <mat-menu #langMenu="matMenu" class="lang-menu">
             <span mat-menu-item (click)="changeLang('en')">{{'GENERAL.LANG_EN' | translate}}</span>
             <span mat-menu-item (click)="changeLang('pl')">{{'GENERAL.LANG_PL' | translate}}</span>
+            <span mat-menu-item (click)="changeLang('es')">{{'GENERAL.LANG_ES' | translate}}</span>
         </mat-menu>
     </div>
 </div>

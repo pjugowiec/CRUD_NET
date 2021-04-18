@@ -10,7 +10,7 @@ using webApi;
 namespace server.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210417162444_init")]
+    [Migration("20210418083330_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -179,8 +179,7 @@ namespace server.Migrations
 
                     b.HasOne("webApi.Domain.Entities.UserEntity", "UserEntity")
                         .WithOne("EmployeeEntity")
-                        .HasForeignKey("webApi.Domain.Entities.EmployeeEntity", "user_id")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("webApi.Domain.Entities.EmployeeEntity", "user_id");
 
                     b.Navigation("AddressEntity");
 

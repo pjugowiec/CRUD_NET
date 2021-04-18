@@ -75,7 +75,7 @@ namespace server.Migrations
                         column: x => x.user_id,
                         principalTable: "_adm_users",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_employees_addresses_address_id",
                         column: x => x.address_id,

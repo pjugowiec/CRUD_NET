@@ -37,12 +37,14 @@ namespace webApi
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped(typeof(IEmployeeRepository), typeof(EmployeeRepository));
             services.AddScoped(typeof(IAddressRepository), typeof(AddressRepository));
+            services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
 
             services.AddScoped(typeof(IAddressMapper), typeof(AddressMapper));
             services.AddScoped(typeof(IUserMapper), typeof(UserMapper));
             services.AddScoped(typeof(IAddressService), typeof(AddressService));
             services.AddScoped(typeof(IEmployeeMapper), typeof(EmployeeMapper));
             services.AddScoped(typeof(IEmployeeService), typeof(EmployeeService));
+            services.AddScoped(typeof(IUserService), typeof(UserService));
 
             services.AddControllersWithViews();
             services.AddControllers();

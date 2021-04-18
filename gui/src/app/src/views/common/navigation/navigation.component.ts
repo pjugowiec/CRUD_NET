@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 
-type Language = 'en' | 'pl';
+type Language = 'en' | 'pl' | 'es';
 
 @Component({
 	selector: 'app-navigation',
@@ -32,6 +32,9 @@ export class NavigationComponent {
 				break;
 			case 'pl':
 				this._translate.use('pl');
+				break;
+			case 'es':
+				this._translate.use('es');
 				break;
 		}
 	}

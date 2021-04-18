@@ -1,0 +1,89 @@
+{
+    "GENERAL": {
+        "VERSION": "1.0",
+        "TITLE": "CRUD",
+        "CANCEL": "Cancel",
+        "DELETE": "Delete",
+        "ADD": "Add",
+        "LOGOUT": "Logout",
+        "EDIT": "Edit",
+        "CLOSE": "Close",
+        "SAVE": "Save",
+        "NEXT": "Next",
+        "BACK": "Back",
+        "CLEAR": "Clear",
+        "FIND_EMPLOYEE": "Find employee",
+        "LANGUAGE": "Language",
+        "LANG_EN": "English",
+        "LANG_PL": "Polish",
+        "LANG_ES": "Spanish",
+        "COMMON_ERROR": {
+            "FIELD_REQUIRED": "Field is required",
+            "EMAIL": "Invalid email",
+            "MIN_LENGTH_6": "Min. length is 6",
+            "MIN_LENGTH_8": "Min. length is 6",
+            "PROBLEM_WITH_SAVE": "Problem with save",
+            "PROBLEM_WITH_GET": "Problem with fetch data"
+        },
+        "INFO": {
+            "FORM_CLEAR": "Form cleared",
+            "SAVE_SUCCES": "Saved changes successfully",
+            "DELETE_SUCCESS": "Deleted successfully"
+        },
+        "FINAL_STEP": "Save or clear"
+    },
+    "LOGIN_PANEL": {
+        "COPYRIGHTS": "PJ",
+        "TITLE_LOGIN": "Login Panel",
+        "USERNAME": "Username",
+        "PASSWORD": "Password",
+        "FORGOT_PASSWORD": "Forgot password?",
+        "LOGIN": "Login",
+        "ERROR": "Wrong credentials",
+        "SUCCESS": "Login succeeded"
+    },
+    "EMPLOYEE_PAGE": {
+        "TITLE": "Employee management",
+        "TABLE": {
+            "LP": "Lp",
+            "NAME": "Name",
+            "SUR_NAME": "Surname",
+            "AGE": "Age",
+            "USERNAME": "Username",
+            "IS_ACTIVE": "Activ",
+            "COUNT_OF_PROJECTS": "Count of projects",
+            "ACTIONS": "Actions"
+        },
+        "CONFIRM_DELETE": {
+            "DELETE_EMPLOYEE": "Removing an employee",
+            "DELETE_EMPLOYEE_MESSAGE": "Are you sure you want to delete the employee",
+            "ERROR": "The employee could not be deleted!",
+            "SUCCESS": "Employee deleted"
+        }
+    },
+
+    "EMPLOYEE_FORM": {
+        "ADD_EMPLOYEE": "Adding employee",
+        "EDIT_EMPLOYEE": "Editing employee",
+        "PERSONAL_INFO_TITLE": "Information about the employee",
+        "PERSONAL_INFO": {
+            "NAME": "Name",
+            "SURNAME": "Surname",
+            "DATE_BIRTH": "Date birth"
+        },
+        "ADDRESS_INFO_TITLE": "Information on residence",
+        "ADDRESS_INFO": {
+            "STREET": "Street",
+            "NUMBER": "Nr. house/flat",
+            "CITY": "City"
+        },
+        "USER_INFO_TITLE": "User information",
+        "USER_INFO": {
+            "USERNAME": "Username",
+            "PASSWORD": "Password",
+            "EMAIL": "Email address"
+        }
+
+    }
+    
+}

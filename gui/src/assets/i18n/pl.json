@@ -16,6 +16,7 @@
         "LANGUAGE": "Język",
         "LANG_EN": "Angielski",
         "LANG_PL": "Polski",
+        "LANG_ES": "Hiszpański",
         "COMMON_ERROR": {
             "FIELD_REQUIRED": "Pole wymagane",
             "EMAIL": "Nie poprawny email",
@@ -37,7 +38,9 @@
         "USERNAME": "Nazwa uzytkownika",
         "PASSWORD": "Hasło",
         "FORGOT_PASSWORD": "Zapomniałeś hasła?",
-        "LOGIN": "Zaloguj"
+        "LOGIN": "Zaloguj",
+        "ERROR": "Błędne dane logowania",
+        "SUCCESS": "Pomyślnie zalogowano"
     },
     "EMPLOYEE_PAGE": {
         "TITLE": "Zarządzanie pracownikami",

@@ -177,8 +177,7 @@ namespace server.Migrations
 
                     b.HasOne("webApi.Domain.Entities.UserEntity", "UserEntity")
                         .WithOne("EmployeeEntity")
-                        .HasForeignKey("webApi.Domain.Entities.EmployeeEntity", "user_id")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("webApi.Domain.Entities.EmployeeEntity", "user_id");
 
                     b.Navigation("AddressEntity");
 
