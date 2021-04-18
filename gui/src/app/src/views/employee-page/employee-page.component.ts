@@ -73,9 +73,7 @@ export class EmployeePageComponent implements OnInit {
           employee: response
         }
       }).afterClosed().subscribe((response: boolean) => {
-        if (response) {
-          this.getData();
-        }
+        this.getData();
       });
     }, (error) => {
       this._snackBarService.open(this._translate.instant('GENERAL.COMMON_ERROR.PROBLEM_WITH_GET'), 'ok', { duration: 3000 });
@@ -89,9 +87,7 @@ export class EmployeePageComponent implements OnInit {
         editMode: false
       }
     }).afterClosed().subscribe((response: boolean) => {
-      if (response) {
-        this.getData();
-      }
+      this.getData();
     });
   }
 
@@ -108,10 +104,9 @@ export class EmployeePageComponent implements OnInit {
         this._translate
           .get('GENERAL.INFO.DELETE_SUCCESS')
           .subscribe((res: string) => {
+            this.getData();
             this._snackBarService.open(res, 'ok', { duration: 3000 });
           });
-
-        this.getData();
 
       });
   }

@@ -7,7 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'gui';
+  title = 'CRUD';
 
   constructor(private _translate: TranslateService) {
     _translate.setDefaultLang('pl');
