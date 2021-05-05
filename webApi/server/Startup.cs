@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using server.Mappers;
 using server.Mappers.Impl;
 using server.Repositories;
@@ -49,6 +50,21 @@ namespace webApi
             services.AddControllersWithViews();
             services.AddControllers();
             services.AddCors();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "V1.0",
+                    Title = "API",
+                    Description = "Information about API",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Patryk Jugowiec",
+                        Email = "patryk.jugowiec@o2.pl",
+                        Url = new Uri("https://github.com/pjugowiec"),
+                    }
+                });
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -69,6 +85,12 @@ namespace webApi
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Api");
             });
         }
     }

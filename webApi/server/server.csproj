@@ -8,7 +8,6 @@
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'webApi' " />
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.2" />
     <PackageReference Include="Npgsql" Version="5.0.4" />
     <PackageReference Include="Json.Net" Version="1.0.25" />
@@ -16,11 +15,11 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Expressmapper" Version="1.9.1" />
     <PackageReference Include="Z.EntityFramework.Plus.EFCore" Version="5.1.30" />
     <PackageReference Include="Z.EntityFramework.Extensions.EFCore" Version="5.1.30" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.5" />
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\" />

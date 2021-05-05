@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using server.Domain.Models;
 using server.Services;
 using webApi.Domain.Entities;
+using System.Xml;
 
 namespace webApi.Controllers
 {

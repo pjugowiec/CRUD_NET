@@ -26,6 +26,10 @@ namespace server.Services.Impl
 
         }
 
+        // <summary>Check the correctness of passwords</summary>
+        // <param name="passIncoming">Argument of type String containing the password from the DTO</param>
+        // <param name="passUser">Argument of type String containing the password from the user</param>
+        // <exception>AuthenticationException when credentials are incorrect</exception>
         private void ValidatePassword(string passIncoming, string passUser)
         {
             if (!CommonUtils.CheckPasswordsSame(passIncoming, passUser))
